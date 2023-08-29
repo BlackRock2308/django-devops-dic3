@@ -29,7 +29,6 @@ ENV DJANGO_SETTINGS_MODULE=djangodevops.settings
 RUN python manage.py migrate
 
 
-
 # Expose the port the app runs on
 EXPOSE 8000
 
