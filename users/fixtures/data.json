@@ -1,0 +1,62 @@
+[
+    {
+      "model": "users.userModel",     
+      "pk": 1,
+      "fields": {
+        "first_name": "Ahmadou Bamba",
+        "last_name": "DIOP",
+        "username": "Lucifer123",
+        "email": "lucifer123@gmail.com"
+      }
+    },
+    {
+      "model":  "users.userModel",     
+      "pk": 2,
+      "fields": {
+        "first_name": "Abdoulaye",
+        "last_name": "SADJI",
+        "username": "nishinoya",
+        "email": "nishinoya@gmail.com"
+      }
+    },
+    {
+        "model":  "users.userModel",     
+        "pk": 3,
+        "fields": {
+          "first_name": "Aissatou",
+          "last_name": "BALDE",
+          "username": "baldita",
+          "email": "baldita@gmail.com"
+        }
+      },
+      {
+        "model":  "users.userModel",     
+        "pk": 4,
+        "fields": {
+          "first_name": "Aida",
+          "last_name": "SOW",
+          "username": "aidish",
+          "email": "aidish@gmail.com"
+        }
+      },
+      {
+        "model":  "users.userModel",     
+        "pk": 5,
+        "fields": {
+          "first_name": "Sokhna Diarra",
+          "last_name": "DIOP",
+          "username": "niska",
+          "email": "niska@gmail.com"
+        }
+      },
+      {
+        "model":  "users.userModel",     
+        "pk": 6,
+        "fields": {
+          "first_name": "Mamadou",
+          "last_name": "NDIAYE",
+          "username": "dragon",
+          "email": "dragon@gmail.com"
+        }
+      }
+  ]
