@@ -26,7 +26,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Command to run the migrations during build
 ENV DJANGO_SETTINGS_MODULE=djangodevops.settings
 # Run Django migrations to create the database and tables
+RUN python manage.py makemigrations
 RUN python manage.py migrate
+
 
 
 # Expose the port the app runs on
