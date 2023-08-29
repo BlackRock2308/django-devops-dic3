@@ -1,5 +1,6 @@
-# Use an official Python runtime as the base image
-FROM python:3.8
+
+# Use the official Python image as the base image
+FROM python:3.9
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -9,38 +10,30 @@ ENV PYTHONUNBUFFERED 1
 ENV APP_VERSION "1.0" 
 # ...
 
-# Set the working directory in the container
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc python3-dev libsqlite3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app/
+# Copy the Django project files into the container
 COPY . /app/
 
-# Install system dependencies
-RUN apt-get update && \
-    apt-get install -y postgresql-client
-
 # Install Python dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# Command to run the migrations during build
-ENV DJANGO_SETTINGS_MODULE=djangodevops.settings
 # Run Django migrations to create the database and tables
-RUN python manage.py makemigrations
 RUN python manage.py migrate
 
+# Collect static files (if needed)
+# RUN python manage.py collectstatic --noinput
 
-
-# Expose the port the app runs on
+# Expose the Django development server port (change it to your desired port)
 EXPOSE 8000
 
-# Command to run the application
-CMD ["gunicorn", "python", "manage.py", "runserver", "0.0.0.0:8000","djangodevops.wsgi:application"]
-
-
-
-
-
-
-
-
+# Start the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
