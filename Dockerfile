@@ -23,6 +23,8 @@ RUN apt-get update && \
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Command to run the migrations during build
+ENV DJANGO_SETTINGS_MODULE=djangodevops.settings
 # Run Django migrations to create the database and tables
 RUN python manage.py migrate
 
