@@ -15,7 +15,7 @@ spec:
         app: django
     spec:
       containers:
-        - image: blackrock30/django-devops:1.0
+        - image: blackrock30/django-devops:2.0
           name: django
           ports:
             - containerPort: 8000
