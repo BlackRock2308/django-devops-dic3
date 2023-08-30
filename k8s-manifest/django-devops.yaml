@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: django
+  name: django-app
   labels:
     app: django
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: django-container
+      app: django
   template:
     metadata:
       labels:
-        app: django-container
+        app: django
     spec:
       containers:
-        - name: django
-          image: blackrock30/django-devops:1.0
-          command: ['/bin/bash', 'run.sh'] # runs migrations and starts the server
+        - image: blackrock30/django-devops:1.0
+          name: django
           ports:
             - containerPort: 8000
-          env:
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-credentials
-                  key: user
+              name: gunicorn
 
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-credentials
-                  key: password
-
-            - name: POSTGRES_HOST
-              value: postgres-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django
+  labels:
+    app: django
+spec:
+  type: LoadBalancer
+  selector:
+    app: django
+  ports:
+    - port: 8000
+      targetPort: 8000
