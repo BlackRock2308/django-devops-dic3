@@ -29,8 +29,6 @@ RUN pip install -r requirements.txt
 # Run Django migrations to create the database and tables
 RUN python manage.py migrate
 
-# Collect static files (if needed)
-# RUN python manage.py collectstatic --noinput
 
 # Expose the Django development server port (change it to your desired port)
 EXPOSE 8000
