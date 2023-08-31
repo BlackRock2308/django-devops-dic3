@@ -42,7 +42,7 @@ Here is the login page of argoCD
 
 ![Screenshot](argo.png)
 
-- We exposed our argocd servern(UI) to an external IP adress using LoadBalancer.
+- We exposed our argocd servern(UI) to an external IP adress using LoadBalancer. (https://34.122.164.163)
 *  username : admin 
 *  password : bZSl32l5iv0HwSM4
 
